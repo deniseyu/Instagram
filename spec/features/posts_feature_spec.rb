@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Viewing posts' do
 
   before do
-    Post.create(image: File.open("#{Rails.root}/spec/helpers/images/baby-duck.jpg"))
+    Post.create(image: File.open("#{Rails.root}/spec/helpers/images/baby-duck.jpg", user: @user))
   end
 
   context 'User not logged in' do
@@ -18,10 +18,10 @@ describe 'Viewing posts' do
     before do
       @user = User.create(email: 'test@test.com', password: 'password', password_confirmation: 'password')
       login_as @user
+      visit '/'
     end
 
     it 'can see posts' do
-      visit '/'
       expect(page).to have_css ('.posts')
     end
   end
@@ -58,6 +58,7 @@ describe 'Posting new photos' do
       attach_file 'post_image', 'spec/helpers/images/baby-duck.jpg'
       click_button 'Upload image'
       expect(page).to have_css ('.posts')
+      expect(page).to have_content ('test@test.com')
       expect(current_path).to eq('/posts')
     end
   end
