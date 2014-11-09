@@ -42,4 +42,7 @@ gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'paperclip'
+gem 'warden', group: :test
+gem 'database_cleaner', group: :test
 

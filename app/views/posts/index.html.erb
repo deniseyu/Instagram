@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <% if @posts.any? %>
+    <ul>
+      <% @posts.each do |post| %>
+        <li class="posts">
+          <%= image_tag post.image.url(:medium) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    No posts yet.
+  <% end %>
+  <a href='/posts/new'>Post</a>
+<% end %>

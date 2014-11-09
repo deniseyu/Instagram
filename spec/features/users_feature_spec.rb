@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-context 'user not signed in and on the homepage' do
+describe 'User not signed in and on the homepage' do
 
   it 'should see a "Log in" and a "Sign up" link' do
     visit '/'
@@ -14,7 +14,7 @@ context 'user not signed in and on the homepage' do
   end
 end
 
-context 'user signed in on the homepage' do
+describe 'User signed in on the homepage' do
 
   before do
     visit '/'
