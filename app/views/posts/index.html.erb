@@ -4,6 +4,17 @@
       <% @posts.each do |post| %>
         <li class="posts">
           <%= image_tag post.image.url(:medium) %>
+          <p><span class="likes_count"><%= post.likes.count %> </span> liked this. <%= link_to 'Like', post_likes_path(post), class: 'likes-link' %></p>
+          <%= link_to "Comment", new_post_comment_path(post) %>
+          <% if post.comments.any? %>
+            <ul>
+              <% post.comments.each do |comment| %>
+                <li>
+                  <%= comment.content %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
         </li>
       <% end %>
     </ul>
