@@ -4,6 +4,9 @@
       <% @posts.each do |post| %>
         <li class="posts">
           <%= image_tag post.image.url(:medium) %>
+
+          <%= link_to "Buy", new_post_charge_path(post) %>
+
           <% if post.user %>
            <%= post.user.email %>
           <% end %>
